@@ -63,6 +63,18 @@ function updateTemplate(file: string): string {
 
       node.hash = AST.builders.hash(hash.pairs);
     },
+
+    SubExpression(node) {
+      const { hash, params, path } = node;
+
+      if (hash.pairs.length === 0) {
+        return;
+      }
+
+      hash.pairs.sort(sortHashPairs);
+
+      node = AST.builders.sexpr(path, params, AST.builders.hash(hash.pairs));
+    },
   });
 
   return AST.print(ast);
