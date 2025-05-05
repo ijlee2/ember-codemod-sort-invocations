@@ -33,12 +33,23 @@ cd <path/to/your/project>
 npx ember-codemod-sort-invocations <arguments>
 ```
 
-Step 2. Replace all `<EMPTY STRING>`'s with the empty string.
+Step 2. If you passed an empty string as an argument's value, it has been replaced with the placeholder text `<EMPTY STRING>`. Do a find-and-replace-all to restore the value.
 
-Step 3. Fix formatting issues (with [`ember-template-lint-plugin-prettier`](https://github.com/ember-template-lint/ember-template-lint-plugin-prettier)).
+```diff
+- <MyComponent @description="<EMPTY STRING>" />
++ <MyComponent @description="" />
+```
+
+Step 3. Fix formatting. You can use [`ember-template-lint-plugin-prettier`](https://github.com/ember-template-lint/ember-template-lint-plugin-prettier) and [`prettier-plugin-ember-template-tag`](https://github.com/ember-tooling/prettier-plugin-ember-template-tag) to format `*.hbs` and `*.{gjs,gts}`, respectively.
 
 ```sh
-pnpm lint:hbs:fix
+pnpm lint:fix
+```
+
+Step 4. Comments such as `{{! @glint-expect-error }}` may have shifted. Move them to the correct location.
+
+```sh
+pnpm lint:types
 ```
 
 
