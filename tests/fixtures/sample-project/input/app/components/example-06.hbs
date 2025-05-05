@@ -1,0 +1,37 @@
+{{! Ideal case }}
+<Ui::Button
+  {{!-- @glint-expect-error: this.enableSubmit has incorrect type --}}
+  @isDisabled={{not this.enableSubmit}}
+  @label="Submit form"
+  @type="submit"
+  class={{local
+    this.styles
+    "button"
+    (unless this.enableSubmit "disabled")
+  }}
+  data-cucumber-button="Submit form"
+  data-test-button
+  {{autofocus}}
+  {{! @glint-expect-error: @onSubmit has incorrect type }}
+  {{on "click" @onSubmit}}
+  ...attributes
+/>
+
+{{! Comments }}
+<Ui::Button
+  data-cucumber-button="Submit form"
+  {{! @glint-expect-error: @onSubmit has incorrect type }}
+  {{on "click" @onSubmit}}
+  @type="submit"
+  {{!-- @glint-expect-error: this.enableSubmit has incorrect type --}}
+  @isDisabled={{not this.enableSubmit}}
+  class={{local
+    this.styles
+    "button"
+    (unless this.enableSubmit "disabled")
+  }}
+  ...attributes
+  data-test-button
+  @label="Submit form"
+  {{autofocus}}
+/>

@@ -1,0 +1,49 @@
+{{! Ideal case }}
+{{component
+  "ui/button"
+  class=(local
+    this.styles
+    "button"
+    (unless this.enableSubmit "disabled")
+  )
+  data-cucumber-button="Submit form"
+  data-test-button=""
+  isDisabled=(not this.enableSubmit)
+  label="Submit form"
+  onClick=@onSubmit
+  type="submit"
+}}
+
+{{! Component helper }}
+{{component "ui/button"}}
+
+{{component "ui/button"
+  onClick=this.doSomething
+  type="submit"
+  data-test-button=""
+  label="Submit form"
+}}
+
+{{component "ui/button"
+  data-cucumber-button="Submit form"
+  onClick=this.doSomething
+  type="submit"
+  isDisabled=true
+  class="ui-button disabled"
+  data-test-button=""
+  label="Submit form"
+}}
+
+{{component "ui/button"
+  data-cucumber-button="Submit form"
+  onClick=@onSubmit
+  type="submit"
+  isDisabled=(not this.enableSubmit)
+  class=(local
+    this.styles
+    "button"
+    (unless this.enableSubmit "disabled")
+  )
+  data-test-button=""
+  label="Submit form"
+}}

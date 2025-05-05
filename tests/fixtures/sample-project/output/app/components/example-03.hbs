@@ -1,0 +1,57 @@
+{{! Ideal case }}
+<Ui::Button
+  @isDisabled={{true}}
+  @label="Submit form"
+  @type="submit"
+  class="ui-button disabled"
+  data-cucumber-button="Submit form"
+  data-test-button
+  {{on "click" this.doSomething}}
+  ...attributes
+/>
+
+{{! Angle bracket syntax }}
+<Ui::Button
+  data-cucumber-button="Submit form"
+  {{on "click" this.doSomething}}
+  @type="submit"
+  @isDisabled={{true}}
+  class="ui-button disabled"
+  ...attributes
+  data-test-button
+  @label="Submit form"
+/>
+
+<Ui::Button
+  data-cucumber-button="Submit form"
+  {{on "click" this.doSomething}}
+  @type="submit"
+  @isDisabled={{true}}
+  class="ui-button disabled"
+  ...attributes
+  data-test-button=""
+>
+  Submit form
+</Ui::Button>
+
+{{! Curly brace syntax }}
+{{ui/button
+  data-cucumber-button="Submit form"
+  onclick=this.doSomething
+  type="submit"
+  isDisabled=true
+  class="ui-button disabled"
+  data-test-button=""
+  label="Submit form"
+}}
+
+{{#ui/button
+  data-cucumber-button="Submit form"
+  onclick=this.doSomething
+  type="submit"
+  isDisabled=true
+  class="ui-button disabled"
+  data-test-button=""
+}}
+  Submit form
+{{/ui/button}}

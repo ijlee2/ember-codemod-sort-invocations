@@ -1,0 +1,21 @@
+<Ui::Page
+  @title={{"Your product"}}
+  {{! @glint-expect-error: Type 'string | null' is not assignable to type 'string'. }}
+  @routeName={{this.router.currentRouteName}}
+  as |Page|
+>
+  {{outlet}}
+
+  {{#if this.someCondition1}}
+    <Page.Button @id="products.overview" @icon="rightarrow" @label="" />
+  {{else if this.someCondition2}}
+    <Page.Button @id="products.product" @icon="" @label="" />
+  {{else}}
+    <Page.Button
+      @id="products.product"
+      @icon=""
+      @label="
+      "
+    />
+  {{/if}}
+</Ui::Page>
