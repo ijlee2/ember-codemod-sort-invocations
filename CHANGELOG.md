@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- [#7](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/7) Supported <template> tags ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.1.1
 
 ### Patch Changes
