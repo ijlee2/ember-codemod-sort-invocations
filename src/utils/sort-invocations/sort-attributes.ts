@@ -65,6 +65,10 @@ export function sortAttributes(attributes: Attribute[]): Attribute[] {
     const { name, value } = attribute;
 
     switch (value.type) {
+      case 'ConcatStatement': {
+        return AST.builders.attr(name, AST.builders.concat(value.parts));
+      }
+
       case 'TextNode': {
         // Bug in @glimmer/syntax@0.84.3 (it removes values that are an empty string)
         if (value.chars === '') {
