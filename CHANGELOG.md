@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1
+
+### Patch Changes
+
+- [#9](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/9) Documented failing cases for ConcatStatement ([@ijlee2](https://github.com/ijlee2))
+- [#8](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/8) Updated README ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.2.0
 
 ### Minor Changes
