@@ -27,7 +27,7 @@
     this.styles
     "button"
     (if this.isFocused "focused")
-  }} role="button" {{on "mouseleave" (fn this.setFocus false)}} {{on "click" this.trackEvent}} {{on "mouseenter" (fn this.setFocus true)}} {{on "click" this.submitForm}}
+  }} role="button" {{on "click" this.trackEvent}} {{on "click" this.submitForm}} {{on "mouseenter" (fn this.setFocus true)}} {{on "mouseleave" (fn this.setFocus false)}}
 >
   Submit form
 </div>
