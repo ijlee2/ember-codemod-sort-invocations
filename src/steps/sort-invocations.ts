@@ -80,7 +80,11 @@ export function sortInvocations(options: Options) {
     const oldPath = join(projectRoot, filePath);
     const oldFile = readFileSync(oldPath, 'utf8');
 
-    const newFile = updateTemplate(oldFile);
+    let newFile = oldFile;
+
+    if (filePath.endsWith('.hbs')) {
+      newFile = updateTemplate(newFile);
+    }
 
     writeFileSync(oldPath, newFile, 'utf8');
   });
