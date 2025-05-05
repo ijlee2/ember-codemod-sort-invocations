@@ -3,7 +3,8 @@
     aria-describedby={{if
       @instructions
       (concat formId "-instructions")
-    }} aria-labelledby={{if @title (concat formId "-title")}} class={{this.styles.form}} data-test-form={{if @title @title ""}} {{autofocus}} {{on "submit" this.submitForm}}
+    }} aria-labelledby={{if @title (concat formId "-title")}} class={{this.styles.form}} data-test-form={{if @title @title ""}} {{autofocus}}
+    {{on "submit" this.submitForm}}
   >
     <Ui::Form::Information
       @formId={{formId}} @instructions={{@instructions}} @title={{@title}}

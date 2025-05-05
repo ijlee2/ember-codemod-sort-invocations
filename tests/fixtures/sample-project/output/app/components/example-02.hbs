@@ -1,6 +1,10 @@
 {{! Ideal case }}
 <Ui::Button
-  @label="Submit form" @type="submit" data-test-button ...attributes {{on "click" this.doSomething}}
+  @label="Submit form"
+  @type="submit"
+  data-test-button
+  {{on "click" this.doSomething}}
+  ...attributes
 />
 
 {{! Angle bracket syntax }}

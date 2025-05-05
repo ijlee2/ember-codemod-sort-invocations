@@ -1,6 +1,13 @@
 {{! Ideal case }}
 <Ui::Button
-  @isDisabled={{true}} @label="Submit form" @type="submit" class="ui-button disabled" data-cucumber-button="Submit form" data-test-button ...attributes {{on "click" this.doSomething}}
+  @isDisabled={{true}}
+  @label="Submit form"
+  @type="submit"
+  class="ui-button disabled"
+  data-cucumber-button="Submit form"
+  data-test-button
+  {{on "click" this.doSomething}}
+  ...attributes
 />
 
 {{! Angle bracket syntax }}
