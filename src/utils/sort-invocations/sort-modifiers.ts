@@ -1,4 +1,4 @@
-import type { AST } from '@codemod-utils/ast-template';
+import { AST } from '@codemod-utils/ast-template';
 
 type Modifier = ReturnType<typeof AST.builders.elementModifier>;
 
@@ -10,7 +10,7 @@ function getName(node: Modifier): string {
   return node.path.original;
 }
 
-export function sortModifiers(a: Modifier, b: Modifier): number {
+function compareModifiers(a: Modifier, b: Modifier): number {
   const nameA = getName(a);
   const nameB = getName(b);
 
@@ -44,4 +44,26 @@ export function sortModifiers(a: Modifier, b: Modifier): number {
   }
 
   return 0;
+}
+
+export function canSkipSortModifiers(modifiers: Modifier[]): boolean {
+  let canSkip = true;
+
+  for (let i = 0; i < modifiers.length - 1; i++) {
+    if (compareModifiers(modifiers[i]!, modifiers[i + 1]!) === 1) {
+      canSkip = false;
+
+      break;
+    }
+  }
+
+  return canSkip;
+}
+
+export function sortModifiers(modifiers: Modifier[]): Modifier[] {
+  return modifiers.sort(compareModifiers).map((modifier) => {
+    const { hash, params, path } = modifier;
+
+    return AST.builders.elementModifier(path, params, hash);
+  });
 }
