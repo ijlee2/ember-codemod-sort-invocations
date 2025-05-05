@@ -70,9 +70,9 @@ function updateTemplate(file: string): string {
 }
 
 export function sortInvocations(options: Options) {
-  const { projectRoot } = options;
+  const { projectRoot, src } = options;
 
-  const filePaths = findFiles('app/**/*.hbs', {
+  const filePaths = findFiles(src, {
     projectRoot,
   });
 
