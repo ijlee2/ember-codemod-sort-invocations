@@ -7,7 +7,7 @@ const codemodOptions: CodemodOptions = {
 
 const options: Options = {
   projectRoot: 'tmp/my-v2-addon',
-  src: ['src/**/*.hbs'],
+  src: ['src/**/*.{gjs,gts,hbs}'],
 };
 
 export { codemodOptions, options };

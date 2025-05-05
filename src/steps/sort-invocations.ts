@@ -5,6 +5,7 @@ import { AST } from '@codemod-utils/ast-template';
 import { findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
+import { parse, replaceTemplate } from '../utils/ast/template-tag.js';
 import {
   canSkipSortAttributes,
   canSkipSortHash,
@@ -80,7 +81,22 @@ export function sortInvocations(options: Options) {
     const oldPath = join(projectRoot, filePath);
     const oldFile = readFileSync(oldPath, 'utf8');
 
-    const newFile = updateTemplate(oldFile);
+    let newFile = oldFile;
+
+    if (filePath.endsWith('.hbs')) {
+      newFile = updateTemplate(newFile);
+    } else {
+      const contentTags = parse(newFile);
+
+      contentTags.reverse().forEach((contentTag) => {
+        const contents = updateTemplate(contentTag.contents);
+
+        newFile = replaceTemplate(newFile, {
+          contents,
+          range: contentTag.range,
+        });
+      });
+    }
 
     writeFileSync(oldPath, newFile, 'utf8');
   });
