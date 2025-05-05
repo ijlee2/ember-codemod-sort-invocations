@@ -22,5 +22,26 @@ export function sortModifiers(a: Modifier, b: Modifier): number {
     return -1;
   }
 
+  if (nameA !== 'on') {
+    return 0;
+  }
+
+  // Sort {{on}} modifiers
+  const eventA = a.params[0]!;
+  const eventB = b.params[0]!;
+
+  if (eventA.type === 'StringLiteral' && eventB.type === 'StringLiteral') {
+    const eventNameA = eventA.original;
+    const eventNameB = eventB.original;
+
+    if (eventNameA > eventNameB) {
+      return 1;
+    }
+
+    if (eventNameB > eventNameA) {
+      return -1;
+    }
+  }
+
   return 0;
 }
