@@ -1,4 +1,4 @@
-import type { AST } from '@codemod-utils/ast-template';
+import { AST } from '@codemod-utils/ast-template';
 
 type Attribute = ReturnType<typeof AST.builders.attr>;
 
@@ -20,7 +20,7 @@ function getPosition(node: Attribute): number {
   return 2;
 }
 
-export function sortAttributes(a: Attribute, b: Attribute): number {
+function compareAttributes(a: Attribute, b: Attribute): number {
   const positionA = getPosition(a);
   const positionB = getPosition(b);
 
@@ -44,4 +44,26 @@ export function sortAttributes(a: Attribute, b: Attribute): number {
   }
 
   return 0;
+}
+
+export function canSkipSortAttributes(attributes: Attribute[]): boolean {
+  let canSkip = true;
+
+  for (let i = 0; i < attributes.length - 1; i++) {
+    if (compareAttributes(attributes[i]!, attributes[i + 1]!) === 1) {
+      canSkip = false;
+
+      break;
+    }
+  }
+
+  return canSkip;
+}
+
+export function sortAttributes(attributes: Attribute[]): Attribute[] {
+  return attributes.sort(compareAttributes).map((attribute) => {
+    const { name, value } = attribute;
+
+    return AST.builders.attr(name, value);
+  });
 }

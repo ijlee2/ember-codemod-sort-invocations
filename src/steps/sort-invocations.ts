@@ -6,8 +6,11 @@ import { findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
 import {
+  canSkipSortAttributes,
+  canSkipSortHash,
+  canSkipSortModifiers,
   sortAttributes,
-  sortHashPairs,
+  sortHash,
   sortModifiers,
 } from '../utils/sort-invocations/index.js';
 
@@ -18,16 +21,14 @@ function updateTemplate(file: string): string {
     BlockStatement(node) {
       const { hash, params, path } = node;
 
-      if (hash.pairs.length === 0) {
+      if (canSkipSortHash(hash)) {
         return;
       }
-
-      hash.pairs.sort(sortHashPairs);
 
       node = AST.builders.block(
         path,
         params,
-        AST.builders.hash(hash.pairs),
+        sortHash(hash),
         AST.builders.blockItself(),
       );
     },
@@ -35,45 +36,33 @@ function updateTemplate(file: string): string {
     ElementNode(node) {
       const { attributes, modifiers } = node;
 
-      if (attributes.length === 0) {
-        return;
+      if (!canSkipSortAttributes(attributes)) {
+        node.attributes = sortAttributes(attributes);
       }
 
-      node.attributes = attributes.sort(sortAttributes).map((attribute) => {
-        const { name, value } = attribute;
-
-        return AST.builders.attr(name, value);
-      });
-
-      node.modifiers = modifiers.sort(sortModifiers).map((modifier) => {
-        const { hash, params, path } = modifier;
-
-        return AST.builders.elementModifier(path, params, hash);
-      });
+      if (!canSkipSortModifiers(modifiers)) {
+        node.modifiers = sortModifiers(modifiers);
+      }
     },
 
     MustacheStatement(node) {
       const { hash } = node;
 
-      if (hash.pairs.length === 0) {
+      if (canSkipSortHash(hash)) {
         return;
       }
 
-      hash.pairs.sort(sortHashPairs);
-
-      node.hash = AST.builders.hash(hash.pairs);
+      node.hash = sortHash(hash);
     },
 
     SubExpression(node) {
       const { hash, params, path } = node;
 
-      if (hash.pairs.length === 0) {
+      if (canSkipSortHash(hash)) {
         return;
       }
 
-      hash.pairs.sort(sortHashPairs);
-
-      node = AST.builders.sexpr(path, params, AST.builders.hash(hash.pairs));
+      node = AST.builders.sexpr(path, params, sortHash(hash));
     },
   });
 
