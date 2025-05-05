@@ -5,14 +5,17 @@ import { AST } from '@codemod-utils/ast-template';
 import { findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
-import { sortAttributes } from '../utils/sort-invocations/index.js';
+import {
+  sortAttributes,
+  sortModifiers,
+} from '../utils/sort-invocations/index.js';
 
 function updateTemplate(file: string): string {
   const traverse = AST.traverse();
 
   const ast = traverse(file, {
     ElementNode(node) {
-      const { attributes } = node;
+      const { attributes, modifiers } = node;
 
       if (attributes.length === 0) {
         return;
@@ -22,6 +25,12 @@ function updateTemplate(file: string): string {
         const { name, value } = attribute;
 
         return AST.builders.attr(name, value);
+      });
+
+      node.modifiers = modifiers.sort(sortModifiers).map((modifier) => {
+        const { hash, params, path } = modifier;
+
+        return AST.builders.elementModifier(path, params, hash);
       });
     },
   });
