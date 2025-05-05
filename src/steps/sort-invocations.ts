@@ -7,6 +7,7 @@ import { findFiles } from '@codemod-utils/files';
 import type { Options } from '../types/index.js';
 import {
   sortAttributes,
+  sortHashPairs,
   sortModifiers,
 } from '../utils/sort-invocations/index.js';
 
@@ -14,6 +15,23 @@ function updateTemplate(file: string): string {
   const traverse = AST.traverse();
 
   const ast = traverse(file, {
+    BlockStatement(node) {
+      const { hash, params, path } = node;
+
+      if (hash.pairs.length === 0) {
+        return;
+      }
+
+      hash.pairs.sort(sortHashPairs);
+
+      node = AST.builders.block(
+        path,
+        params,
+        AST.builders.hash(hash.pairs),
+        AST.builders.blockItself(),
+      );
+    },
+
     ElementNode(node) {
       const { attributes, modifiers } = node;
 
@@ -32,6 +50,18 @@ function updateTemplate(file: string): string {
 
         return AST.builders.elementModifier(path, params, hash);
       });
+    },
+
+    MustacheStatement(node) {
+      const { hash } = node;
+
+      if (hash.pairs.length === 0) {
+        return;
+      }
+
+      hash.pairs.sort(sortHashPairs);
+
+      node.hash = AST.builders.hash(hash.pairs);
     },
   });
 

@@ -16,16 +16,16 @@
 
 {{! Curly brace syntax }}
 {{ui/button
-  onclick=this.doSomething
-  type="submit"
   data-test-button=""
   label="Submit form"
+  onclick=this.doSomething
+  type="submit"
 }}
 
 {{#ui/button
+  data-test-button=""
   onclick=this.doSomething
   type="submit"
-  data-test-button=""
 }}
   Submit form
 {{/ui/button}}

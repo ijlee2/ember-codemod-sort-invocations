@@ -16,22 +16,22 @@
 
 {{! Curly brace syntax }}
 {{ui/button
+  class="ui-button disabled"
   data-cucumber-button="Submit form"
+  data-test-button=""
+  isDisabled=true
+  label="Submit form"
   onclick=this.doSomething
   type="submit"
-  isDisabled=true
-  class="ui-button disabled"
-  data-test-button=""
-  label="Submit form"
 }}
 
 {{#ui/button
+  class="ui-button disabled"
   data-cucumber-button="Submit form"
+  data-test-button=""
+  isDisabled=true
   onclick=this.doSomething
   type="submit"
-  isDisabled=true
-  class="ui-button disabled"
-  data-test-button=""
 }}
   Submit form
 {{/ui/button}}

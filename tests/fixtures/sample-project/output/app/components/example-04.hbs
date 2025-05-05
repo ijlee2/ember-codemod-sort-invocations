@@ -28,30 +28,30 @@
 
 {{! Curly brace syntax }}
 {{ui/button
-  data-cucumber-button="Submit form"
-  onclick=onSubmit
-  type="submit"
-  isDisabled=(not this.enableSubmit)
   class=(local
     this.styles
     "button"
     (unless this.enableSubmit "disabled")
   )
+  data-cucumber-button="Submit form"
   data-test-button=""
+  isDisabled=(not this.enableSubmit)
   label="Submit form"
+  onclick=onSubmit
+  type="submit"
 }}
 
 {{#ui/button
-  data-cucumber-button="Submit form"
-  onclick=onSubmit
-  type="submit"
-  isDisabled=(not this.enableSubmit)
   class=(local
     this.styles
     "button"
     (unless this.enableSubmit "disabled")
   )
+  data-cucumber-button="Submit form"
   data-test-button=""
+  isDisabled=(not this.enableSubmit)
+  onclick=onSubmit
+  type="submit"
 }}
   Submit form
 {{/ui/button}}
