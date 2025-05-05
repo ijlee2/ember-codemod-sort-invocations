@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.2
+
+### Patch Changes
+
+- [#11](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/11) Updated README ([@ijlee2](https://github.com/ijlee2))
+- [#10](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/10) Updated test fixtures ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.2.1
 
 ### Patch Changes
