@@ -4,12 +4,54 @@
 
 _Codemod to sort invocations in templates_
 
+1. [Features](#features)
+1. [Usage](#usage)
+    - [Arguments](#arguments)
+    - [Limitations](#limitations)
+1. [Compatibility](#compatibility)
+1. [Contributing](#contributing)
+1. [License](#license)
+
+
+## Features
+
+The codemod helps you standardize templates:
+
+- Sort arguments, attributes, and modifiers in component invocations
+- Sort keys in helper invocations
+- Sort keys in modifier invocations
+
+By sorting things that are order-independent, you can more easily refactor code. In addition, sorting removes style differences, so you can review another person's code more effectively.
+
 
 ## Usage
 
+Step 1. Run codemod.
+
+```sh
+cd <path/to/your/project>
+npx ember-codemod-sort-invocations <arguments>
+```
+
+Step 2. Replace all `<EMPTY STRING>`'s with the empty string.
+
+Step 3. Fix formatting issues (with [`ember-template-lint-plugin-prettier`](https://github.com/ember-template-lint/ember-template-lint-plugin-prettier)).
+
+```sh
+pnpm lint:hbs:fix
+```
+
+
 ### Arguments
 
-[PROVIDE REQUIRED AND OPTIONAL ARGUMENTS.]
+
+You must pass `--type` to indicate what type of project you have.
+
+```sh
+npx ember-codemod-sort-invocations --type app
+npx ember-codemod-sort-invocations --type v1-addon
+npx ember-codemod-sort-invocations --type v2-addon
+```
 
 <details>
 
