@@ -1,6 +1,18 @@
 import { AST } from '@codemod-utils/ast-template';
 
 type Attribute = ReturnType<typeof AST.builders.attr>;
+type MustacheStatement = ReturnType<typeof AST.builders.mustache>;
+type TextNode = ReturnType<typeof AST.builders.text>;
+
+function cloneIfTextNode(
+  node: MustacheStatement | TextNode,
+): MustacheStatement | TextNode {
+  if (node.type === 'MustacheStatement') {
+    return node;
+  }
+
+  return AST.builders.text(node.chars);
+}
 
 function getName(node: Attribute): string {
   return node.name;
@@ -65,8 +77,30 @@ export function sortAttributes(attributes: Attribute[]): Attribute[] {
     const { name, value } = attribute;
 
     switch (value.type) {
+      case 'ConcatStatement': {
+        // Bug in ember-template-recast@6.1.5 (it removes the single character before or after a MustacheStatement)
+        if (value.parts.length < 2) {
+          break;
+        }
+
+        const firstPart = value.parts[0];
+        const newFirstPart = cloneIfTextNode(firstPart);
+
+        const lastPart = value.parts[value.parts.length - 1]!;
+        const newLastPart = cloneIfTextNode(lastPart);
+
+        return AST.builders.attr(
+          name,
+          AST.builders.concat([
+            newFirstPart,
+            ...value.parts.slice(1, value.parts.length - 1),
+            newLastPart,
+          ]),
+        );
+      }
+
       case 'TextNode': {
-        // Bug in @glimmer/syntax@0.84.3 (it removes values that are an empty string)
+        // Bug in ember-template-recast@6.1.5 (it removes values that are an empty string)
         if (value.chars === '') {
           const { start, end } = value.loc;
 
