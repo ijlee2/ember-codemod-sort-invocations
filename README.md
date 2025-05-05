@@ -88,10 +88,10 @@ pnpm build
 
 ## Known issues
 
-1\. If you passed an empty string as an argument's value, it has been replaced with the placeholder text `<EMPTY STRING>`. Do a find-and-replace-all to restore the value.
+1\. If you passed an empty string as an argument's value, it has been replaced with `{{""}}`. Let [`ember-template-lint`](https://github.com/ember-template-lint/ember-template-lint/blob/master/docs/rule/no-unnecessary-curly-strings.md) fix the formatting change, or do a find-and-replace-all to restore the value.
 
 ```diff
-- <MyComponent @description="<EMPTY STRING>" />
+- <MyComponent @description={{""}} />
 + <MyComponent @description="" />
 ```
 
