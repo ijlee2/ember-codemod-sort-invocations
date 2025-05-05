@@ -4,8 +4,7 @@
     this.styles
     "button"
     (unless this.enableSubmit "disabled")
-  }} data-cucumber-button="Submit form" data-test-button ...attributes {{autofocus}}
-  {{on "click" @onSubmit}}
+  }} data-cucumber-button="Submit form" data-test-button ...attributes {{autofocus}} {{on "click" @onSubmit}}
 />
 
 {{! Angle bracket syntax }}
@@ -14,7 +13,7 @@
     this.styles
     "button"
     (unless this.enableSubmit "disabled")
-  }} data-cucumber-button="Submit form" data-test-button ...attributes {{on "click" @onSubmit}} {{autofocus}}
+  }} data-cucumber-button="Submit form" data-test-button ...attributes {{autofocus}} {{on "click" @onSubmit}}
 />
 
 <Ui::Button
@@ -22,7 +21,7 @@
     this.styles
     "button"
     (unless this.enableSubmit "disabled")
-  }} data-cucumber-button="Submit form" data-test-button ...attributes {{on "click" @onSubmit}} {{autofocus}}
+  }} data-cucumber-button="Submit form" data-test-button ...attributes {{autofocus}} {{on "click" @onSubmit}}
 >
   Submit form
 </Ui::Button>
