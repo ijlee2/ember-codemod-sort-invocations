@@ -1,0 +1,25 @@
+{{! Ideal case }}
+<MyComponent
+  @isOpen={{this.isOpen}} @parentContainerId={{concat "#" @parentId}}
+/>
+
+<MyComponent
+  @isOpen={{this.isOpen}} @style={{concat "." @type "1"}}
+/>
+
+<input
+  local-class="input {{concat 'flag-' @country}}" type="tel"
+/>
+
+{{! String concatenations }}
+<MyComponent
+  @isOpen={{this.isOpen}} @parentContainerId="{{@parentId}}"
+/>
+
+<MyComponent
+  @isOpen={{this.isOpen}} @style="{{@type}}"
+/>
+
+<input
+  local-class="input flag-{{@country}}" type="tel"
+/>
