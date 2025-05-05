@@ -9,34 +9,27 @@
 
 {{! Angle bracket syntax }}
 <Ui::Button
-  {{on "click" this.doSomething}}
-  @type="submit"
-  ...attributes
-  data-test-button
-  @label="Submit form"
+  @label="Submit form" @type="submit" data-test-button ...attributes {{on "click" this.doSomething}}
 />
 
 <Ui::Button
-  {{on "click" this.doSomething}}
-  @type="submit"
-  ...attributes
-  data-test-button=""
+  @type="submit" data-test-button="<EMPTY STRING>" ...attributes {{on "click" this.doSomething}}
 >
   Submit form
 </Ui::Button>
 
 {{! Curly brace syntax }}
 {{ui/button
-  onclick=this.doSomething
-  type="submit"
   data-test-button=""
   label="Submit form"
+  onclick=this.doSomething
+  type="submit"
 }}
 
 {{#ui/button
+  data-test-button=""
   onclick=this.doSomething
   type="submit"
-  data-test-button=""
 }}
   Submit form
 {{/ui/button}}

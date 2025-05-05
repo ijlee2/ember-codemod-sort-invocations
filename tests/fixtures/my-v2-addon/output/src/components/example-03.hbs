@@ -12,46 +12,33 @@
 
 {{! Angle bracket syntax }}
 <Ui::Button
-  data-cucumber-button="Submit form"
-  {{on "click" this.doSomething}}
-  @type="submit"
-  @isDisabled={{true}}
-  class="ui-button disabled"
-  ...attributes
-  data-test-button
-  @label="Submit form"
+  @isDisabled={{true}} @label="Submit form" @type="submit" class="ui-button disabled" data-cucumber-button="Submit form" data-test-button ...attributes {{on "click" this.doSomething}}
 />
 
 <Ui::Button
-  data-cucumber-button="Submit form"
-  {{on "click" this.doSomething}}
-  @type="submit"
-  @isDisabled={{true}}
-  class="ui-button disabled"
-  ...attributes
-  data-test-button=""
+  @isDisabled={{true}} @type="submit" class="ui-button disabled" data-cucumber-button="Submit form" data-test-button="<EMPTY STRING>" ...attributes {{on "click" this.doSomething}}
 >
   Submit form
 </Ui::Button>
 
 {{! Curly brace syntax }}
 {{ui/button
+  class="ui-button disabled"
   data-cucumber-button="Submit form"
+  data-test-button=""
+  isDisabled=true
+  label="Submit form"
   onclick=this.doSomething
   type="submit"
-  isDisabled=true
-  class="ui-button disabled"
-  data-test-button=""
-  label="Submit form"
 }}
 
 {{#ui/button
+  class="ui-button disabled"
   data-cucumber-button="Submit form"
+  data-test-button=""
+  isDisabled=true
   onclick=this.doSomething
   type="submit"
-  isDisabled=true
-  class="ui-button disabled"
-  data-test-button=""
 }}
   Submit form
 {{/ui/button}}

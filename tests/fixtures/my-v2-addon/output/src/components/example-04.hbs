@@ -17,64 +17,49 @@
 
 {{! Angle bracket syntax }}
 <Ui::Button
-  data-cucumber-button="Submit form"
-  {{on "click" @onSubmit}}
-  @type="submit"
-  @isDisabled={{not this.enableSubmit}}
-  class={{local
+  @isDisabled={{not this.enableSubmit}} @label="Submit form" @type="submit" class={{local
     this.styles
     "button"
     (unless this.enableSubmit "disabled")
-  }}
-  ...attributes
-  data-test-button
-  @label="Submit form"
-  {{autofocus}}
+  }} data-cucumber-button="Submit form" data-test-button ...attributes {{autofocus}} {{on "click" @onSubmit}}
 />
 
 <Ui::Button
-  data-cucumber-button="Submit form"
-  {{on "click" @onSubmit}}
-  @type="submit"
-  @isDisabled={{not this.enableSubmit}}
-  class={{local
+  @isDisabled={{not this.enableSubmit}} @type="submit" class={{local
     this.styles
     "button"
     (unless this.enableSubmit "disabled")
-  }}
-  ...attributes
-  data-test-button=""
-  {{autofocus}}
+  }} data-cucumber-button="Submit form" data-test-button="<EMPTY STRING>" ...attributes {{autofocus}} {{on "click" @onSubmit}}
 >
   Submit form
 </Ui::Button>
 
 {{! Curly brace syntax }}
 {{ui/button
-  data-cucumber-button="Submit form"
-  onclick=onSubmit
-  type="submit"
-  isDisabled=(not this.enableSubmit)
   class=(local
     this.styles
     "button"
     (unless this.enableSubmit "disabled")
   )
+  data-cucumber-button="Submit form"
   data-test-button=""
+  isDisabled=(not this.enableSubmit)
   label="Submit form"
+  onclick=onSubmit
+  type="submit"
 }}
 
 {{#ui/button
-  data-cucumber-button="Submit form"
-  onclick=onSubmit
-  type="submit"
-  isDisabled=(not this.enableSubmit)
   class=(local
     this.styles
     "button"
     (unless this.enableSubmit "disabled")
   )
+  data-cucumber-button="Submit form"
   data-test-button=""
+  isDisabled=(not this.enableSubmit)
+  onclick=onSubmit
+  type="submit"
 }}
   Submit form
 {{/ui/button}}
