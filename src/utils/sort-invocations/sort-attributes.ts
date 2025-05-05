@@ -64,15 +64,21 @@ export function sortAttributes(attributes: Attribute[]): Attribute[] {
   return attributes.sort(compareAttributes).map((attribute) => {
     const { name, value } = attribute;
 
-    // Bug in @glimmer/syntax@0.84.3 (it removes values that are an empty string)
-    if (value.type === 'TextNode' && value.chars === '') {
-      const { start, end } = value.loc;
+    switch (value.type) {
+      case 'TextNode': {
+        // Bug in @glimmer/syntax@0.84.3 (it removes values that are an empty string)
+        if (value.chars === '') {
+          const { start, end } = value.loc;
 
-      const isValueUndefined =
-        start.line === end.line && start.column === end.column;
+          const isValueUndefined =
+            start.line === end.line && start.column === end.column;
 
-      if (!isValueUndefined) {
-        return AST.builders.attr(name, AST.builders.text('<EMPTY STRING>'));
+          if (!isValueUndefined) {
+            return AST.builders.attr(name, AST.builders.text('<EMPTY STRING>'));
+          }
+        }
+
+        break;
       }
     }
 
