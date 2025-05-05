@@ -97,25 +97,6 @@ pnpm build
 
 2\. Comments such as `{{! @glint-expect-error }}` may have shifted. Move them to the correct location.
 
-3\. If you passed a concatenated string that has exactly 1 character before or after a "mustache," you will need to add back the missing character.
-
-```diff
-<MyComponent
-  @isOpen={{this.isOpen}}
--   @parentContainerId="{{@parentId}}"
-+   @parentContainerId="#{{@parentId}}"
-/>
-```
-
-Better yet, use the `{{concat}}` helper instead (this helps codemods).
-
-```hbs
-<MyComponent
-  @isOpen={{this.isOpen}}
-  @parentContainerId={{concat "#" @parentId}}
-/>
-```
-
 
 ## Compatibility
 
