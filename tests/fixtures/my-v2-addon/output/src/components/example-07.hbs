@@ -1,0 +1,19 @@
+{{! Ideal case }}
+<this.MyButton
+  @label="Submit form"
+  @type="submit"
+  data-test-button
+  {{on "click" this.doSomething}}
+  ...attributes
+/>
+
+{{! Component as a property }}
+<this.MyButton
+  @label="Submit form" @type="submit" data-test-button ...attributes {{on "click" this.doSomething}}
+/>
+
+<this.MyButton
+  @type="submit" data-test-button ...attributes {{on "click" this.doSomething}}
+>
+  Submit form
+</this.MyButton>

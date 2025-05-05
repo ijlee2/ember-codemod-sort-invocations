@@ -1,13 +1,10 @@
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
 import { runCodemod } from '../../src/index.js';
-import {
-  inputProject,
-  outputProject,
-} from '../fixtures/sample-project/index.js';
-import { codemodOptions } from '../helpers/shared-test-setups/sample-project.js';
+import { inputProject, outputProject } from '../fixtures/my-v2-addon/index.js';
+import { codemodOptions } from '../helpers/shared-test-setups/my-v2-addon.js';
 
-test('index > sample-project', function () {
+test('index > my-v2-addon', function () {
   loadFixture(inputProject, codemodOptions);
 
   runCodemod(codemodOptions);

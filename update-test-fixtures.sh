@@ -16,8 +16,16 @@
 pnpm build
 
 # Update fixtures
-rm -r "tests/fixtures/sample-project/output"
-cp -r "tests/fixtures/sample-project/input" "tests/fixtures/sample-project/output"
+rm -r "tests/fixtures/my-app/output"
+cp -r "tests/fixtures/my-app/input" "tests/fixtures/my-app/output"
 
 ./dist/bin/ember-codemod-sort-invocations.js \
-  --root "tests/fixtures/sample-project/output"
+  --root "tests/fixtures/my-app/output" \
+  --type "app"
+
+rm -r "tests/fixtures/my-v2-addon/output"
+cp -r "tests/fixtures/my-v2-addon/input" "tests/fixtures/my-v2-addon/output"
+
+./dist/bin/ember-codemod-sort-invocations.js \
+  --root "tests/fixtures/my-v2-addon/output" \
+  --type "v2-addon"

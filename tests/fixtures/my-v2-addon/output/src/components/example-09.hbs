@@ -1,0 +1,45 @@
+{{! Ideal case }}
+<button
+  class={{local this.styles "button" "disabled"}}
+  data-cucumber-button="Submit form"
+  data-test-button
+  disabled
+  type="submit"
+  {{autofocus}}
+  {{on "click" @onSubmit}}
+  ...attributes
+>
+  Submit form
+</button>
+
+<div
+  class={{local
+    this.styles
+    "button"
+    (if this.isFocused "focused")
+  }}
+  role="button"
+  {{on "click" this.submitForm}}
+  {{on "click" this.trackEvent}}
+  {{on "mouseenter" (fn this.setFocus true)}}
+  {{on "mouseleave" (fn this.setFocus false)}}
+>
+  Submit form
+</div>
+
+{{! HTML elements }}
+<button
+  class={{local this.styles "button" "disabled"}} data-cucumber-button="Submit form" data-test-button disabled type="submit" ...attributes {{autofocus}} {{on "click" @onSubmit}}
+>
+  Submit form
+</button>
+
+<div
+  class={{local
+    this.styles
+    "button"
+    (if this.isFocused "focused")
+  }} role="button" {{on "click" this.trackEvent}} {{on "click" this.submitForm}} {{on "mouseenter" (fn this.setFocus true)}} {{on "mouseleave" (fn this.setFocus false)}}
+>
+  Submit form
+</div>

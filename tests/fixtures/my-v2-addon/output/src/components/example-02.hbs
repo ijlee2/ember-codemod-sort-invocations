@@ -1,0 +1,35 @@
+{{! Ideal case }}
+<Ui::Button
+  @label="Submit form"
+  @type="submit"
+  data-test-button
+  {{on "click" this.doSomething}}
+  ...attributes
+/>
+
+{{! Angle bracket syntax }}
+<Ui::Button
+  @label="Submit form" @type="submit" data-test-button ...attributes {{on "click" this.doSomething}}
+/>
+
+<Ui::Button
+  @type="submit" data-test-button="<EMPTY STRING>" ...attributes {{on "click" this.doSomething}}
+>
+  Submit form
+</Ui::Button>
+
+{{! Curly brace syntax }}
+{{ui/button
+  data-test-button=""
+  label="Submit form"
+  onclick=this.doSomething
+  type="submit"
+}}
+
+{{#ui/button
+  data-test-button=""
+  onclick=this.doSomething
+  type="submit"
+}}
+  Submit form
+{{/ui/button}}

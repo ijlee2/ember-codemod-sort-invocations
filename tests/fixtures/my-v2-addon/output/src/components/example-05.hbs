@@ -1,0 +1,63 @@
+{{! Ideal case }}
+<MyComponent
+  @description={{if
+    this.someCondition
+    (t
+      "my-component.label.version-1"
+      installedOn=this.installationDate
+      packageName="@ember/source"
+      packageVersion="6.0.0"
+    )
+    (t
+      "my-component.label.version-2"
+      (hash
+        installedOn=this.installationDate
+        packageName="@ember/source"
+        packageVersion="6.0.0"
+      )
+    )
+  }}
+  @title="Update history"
+/>
+
+{{! Subexpressions }}
+<MyComponent
+  @description={{if
+    this.someCondition
+    (t
+      "my-component.label.version-1"
+      installedOn=this.installationDate
+      packageName="@ember/source"
+      packageVersion="6.0.0"
+    )
+    (t
+      "my-component.label.version-2"
+      (hash
+        installedOn=this.installationDate
+        packageName="@ember/source"
+        packageVersion="6.0.0"
+      )
+    )
+  }} @title="Update history"
+/>
+
+{{my-component
+  description=(if
+    this.someCondition
+    (t
+      "my-component.label.version-1"
+      installedOn=this.installationDate
+      packageName="@ember/source"
+      packageVersion="6.0.0"
+    )
+    (t
+      "my-component.label.version-2"
+      (hash
+        installedOn=this.installationDate
+        packageName="@ember/source"
+        packageVersion="6.0.0"
+      )
+    )
+  )
+  title="Update history"
+}}
