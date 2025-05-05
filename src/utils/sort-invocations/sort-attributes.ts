@@ -74,7 +74,10 @@ export function sortAttributes(attributes: Attribute[]): Attribute[] {
             start.line === end.line && start.column === end.column;
 
           if (!isValueUndefined) {
-            return AST.builders.attr(name, AST.builders.text('<EMPTY STRING>'));
+            return AST.builders.attr(
+              name,
+              AST.builders.mustache(AST.builders.string('')),
+            );
           }
         }
 
