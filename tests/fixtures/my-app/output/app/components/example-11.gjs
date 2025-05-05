@@ -13,18 +13,11 @@ const ExampleComponent = <template>
 
   {{! Angle bracket syntax }}
   <UiButton
-    {{on "click" @onSubmit}}
-    @type="submit"
-    ...attributes
-    data-test-button
-    @label="Submit form"
+    @label="Submit form" @type="submit" data-test-button ...attributes {{on "click" @onSubmit}}
   />
 
   <UiButton
-    {{on "click" @onSubmit}}
-    @type="submit"
-    ...attributes
-    data-test-button
+    @type="submit" data-test-button ...attributes {{on "click" @onSubmit}}
   >
     Submit form
   </UiButton>

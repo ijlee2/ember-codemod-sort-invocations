@@ -19,34 +19,19 @@ export default class ExampleComponent extends Component<ExampleSignature> {
 
   <template>
     <UiButton
-      data-cucumber-button="Submit form"
-      {{on "click" @onSubmit}}
-      @type="submit"
-      @isDisabled={{not this.enableSubmit}}
-      class={{local
+      @isDisabled={{not this.enableSubmit}} @label="Submit form" @type="submit" class={{local
         styles
         "button"
         (unless this.enableSubmit "disabled")
-      }}
-      ...attributes
-      data-test-button
-      @label="Submit form"
-      {{autofocus}}
+      }} data-cucumber-button="Submit form" data-test-button ...attributes {{autofocus}} {{on "click" @onSubmit}}
     />
 
     <UiButton
-      data-cucumber-button="Submit form"
-      {{on "click" @onSubmit}}
-      @type="submit"
-      @isDisabled={{not this.enableSubmit}}
-      class={{local
+      @isDisabled={{not this.enableSubmit}} @type="submit" class={{local
         styles
         "button"
         (unless this.enableSubmit "disabled")
-      }}
-      ...attributes
-      data-test-button=""
-      {{autofocus}}
+      }} data-cucumber-button="Submit form" data-test-button="<EMPTY STRING>" ...attributes {{autofocus}} {{on "click" @onSubmit}}
     >
       Submit form
     </UiButton>
