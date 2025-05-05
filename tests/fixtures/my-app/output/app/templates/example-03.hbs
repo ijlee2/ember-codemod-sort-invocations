@@ -5,12 +5,12 @@
   {{outlet}}
 
   {{#if this.someCondition1}}
-    <Page.Button @icon="rightarrow" @id="products.overview" @label="<EMPTY STRING>" />
+    <Page.Button @icon="rightarrow" @id="products.overview" @label={{""}} />
   {{else if this.someCondition2}}
-    <Page.Button @icon="<EMPTY STRING>" @id="products.product" @label="<EMPTY STRING>" />
+    <Page.Button @icon={{""}} @id="products.product" @label={{""}} />
   {{else}}
     <Page.Button
-      @icon="<EMPTY STRING>" @id="products.product" @label="
+      @icon={{""}} @id="products.product" @label="
       "
     />
   {{/if}}

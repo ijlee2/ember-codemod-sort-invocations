@@ -25,7 +25,7 @@ export default class ExampleComponent extends Component {
         styles
         "button"
         (unless this.enableSubmit "disabled")
-      }} data-cucumber-button="Submit form" data-test-button="<EMPTY STRING>" ...attributes {{autofocus}} {{on "click" @onSubmit}}
+      }} data-cucumber-button="Submit form" data-test-button={{""}} ...attributes {{autofocus}} {{on "click" @onSubmit}}
     >
       Submit form
     </UiButton>
