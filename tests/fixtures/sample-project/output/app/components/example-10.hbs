@@ -15,14 +15,15 @@
     >
       {{yield
         (hash
-          Input=(component
-            "ui/form/input"
+          Checkbox=(component
+            "ui/form/checkbox"
             changeset=this.changeset
+            isInline=true
             isWide=CQ.features.wide
             onUpdate=this.updateChangeset
           )
-          Textarea=(component
-            "ui/form/textarea"
+          Input=(component
+            "ui/form/input"
             changeset=this.changeset
             isWide=CQ.features.wide
             onUpdate=this.updateChangeset
@@ -33,15 +34,14 @@
             isWide=CQ.features.wide
             onUpdate=this.updateChangeset
           )
-          Checkbox=(component
-            "ui/form/checkbox"
+          Select=(component
+            "ui/form/select"
             changeset=this.changeset
-            isInline=true
             isWide=CQ.features.wide
             onUpdate=this.updateChangeset
           )
-          Select=(component
-            "ui/form/select"
+          Textarea=(component
+            "ui/form/textarea"
             changeset=this.changeset
             isWide=CQ.features.wide
             onUpdate=this.updateChangeset
