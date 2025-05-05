@@ -21,3 +21,9 @@ cp -r "tests/fixtures/my-app/input" "tests/fixtures/my-app/output"
 
 ./dist/bin/ember-codemod-sort-invocations.js \
   --root "tests/fixtures/my-app/output"
+
+rm -r "tests/fixtures/my-v2-addon/output"
+cp -r "tests/fixtures/my-v2-addon/input" "tests/fixtures/my-v2-addon/output"
+
+./dist/bin/ember-codemod-sort-invocations.js \
+  --root "tests/fixtures/my-v2-addon/output"
