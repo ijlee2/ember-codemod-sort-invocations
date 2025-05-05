@@ -1,13 +1,6 @@
 {{! Ideal case }}
 <button
-  class={{local this.styles "button" "disabled"}}
-  data-cucumber-button="Submit form"
-  data-test-button
-  disabled
-  type="submit"
-  {{autofocus}}
-  {{on "click" @onSubmit}}
-  ...attributes
+  class={{local this.styles "button" "disabled"}} data-cucumber-button="Submit form" data-test-button disabled type="submit" ...attributes {{autofocus}} {{on "click" @onSubmit}}
 >
   Submit form
 </button>
@@ -17,41 +10,24 @@
     this.styles
     "button"
     (if this.isFocused "focused")
-  }}
-  role="button"
-  {{on "click" this.submitForm}}
-  {{on "click" this.trackEvent}}
-  {{on "mouseenter" (fn this.setFocus true)}}
-  {{on "mouseleave" (fn this.setFocus false)}}
+  }} role="button" {{on "click" this.submitForm}} {{on "click" this.trackEvent}} {{on "mouseenter" (fn this.setFocus true)}} {{on "mouseleave" (fn this.setFocus false)}}
 >
   Submit form
 </div>
 
 {{! HTML elements }}
 <button
-  data-cucumber-button="Submit form"
-  {{on "click" @onSubmit}}
-  type="submit"
-  disabled
-  class={{local this.styles "button" "disabled"}}
-  ...attributes
-  data-test-button
-  {{autofocus}}
+  class={{local this.styles "button" "disabled"}} data-cucumber-button="Submit form" data-test-button disabled type="submit" ...attributes {{autofocus}} {{on "click" @onSubmit}}
 >
   Submit form
 </button>
 
 <div
-  role="button"
-  {{on "mouseleave" (fn this.setFocus false)}}
   class={{local
     this.styles
     "button"
     (if this.isFocused "focused")
-  }}
-  {{on "click" this.trackEvent}}
-  {{on "mouseenter" (fn this.setFocus true)}}
-  {{on "click" this.submitForm}}
+  }} role="button" {{on "click" this.trackEvent}} {{on "click" this.submitForm}} {{on "mouseenter" (fn this.setFocus true)}} {{on "mouseleave" (fn this.setFocus false)}}
 >
   Submit form
 </div>

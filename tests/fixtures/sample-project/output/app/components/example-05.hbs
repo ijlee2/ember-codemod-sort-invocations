@@ -16,13 +16,11 @@
         packageVersion="6.0.0"
       )
     )
-  }}
-  @title="Update history"
+  }} @title="Update history"
 />
 
 {{! Subexpressions }}
 <MyComponent
-  @title="Update history"
   @description={{if
     this.someCondition
     (t
@@ -39,7 +37,7 @@
         packageName="@ember/source"
       )
     )
-  }}
+  }} @title="Update history"
 />
 
 {{my-component
