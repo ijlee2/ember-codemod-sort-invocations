@@ -1,19 +1,13 @@
 {{#let (unique-id) as |formId|}}
   <form
-    class={{this.styles.form}}
-    data-test-form={{if @title @title ""}}
-    aria-labelledby={{if @title (concat formId "-title")}}
     aria-describedby={{if
       @instructions
       (concat formId "-instructions")
-    }}
-    {{autofocus}}
+    }} aria-labelledby={{if @title (concat formId "-title")}} class={{this.styles.form}} data-test-form={{if @title @title ""}} {{autofocus}}
     {{on "submit" this.submitForm}}
   >
     <Ui::Form::Information
-      @formId={{formId}}
-      @title={{@title}}
-      @instructions={{@instructions}}
+      @formId={{formId}} @instructions={{@instructions}} @title={{@title}}
     />
 
     <ContainerQuery
@@ -59,9 +53,7 @@
 
     <div class={{this.styles.actions}}>
       <button
-        type="submit"
-        data-test-button="Submit"
-        class={{this.styles.submit-button}}
+        class={{this.styles.submit-button}} data-test-button="Submit" type="submit"
       >
         {{t "components.ui.form.submit"}}
       </button>
