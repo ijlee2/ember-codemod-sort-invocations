@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+
+### Minor Changes
+
+- [#13](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/13) Handled ConcatStatement's better ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.3.0
 
 ### Minor Changes
