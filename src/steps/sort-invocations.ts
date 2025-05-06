@@ -10,6 +10,7 @@ import {
   canSkipSortAttributes,
   canSkipSortHash,
   canSkipSortModifiers,
+  listSplattributesLast,
   sortAttributes,
   sortHash,
   sortModifiers,
@@ -52,45 +53,10 @@ function updateTemplate(file: string): string {
         return;
       }
 
-      const lastAttribute = node.attributes.at(-1)!;
-      const hasSplattributes = lastAttribute.name === '...attributes';
-
-      if (!hasSplattributes) {
-        return;
-      }
-
       // The originally last attribute's location has the highest line number
       const lineNumber = attributes.at(-1)!.loc.start.line;
 
-      node.attributes.splice(
-        -1,
-        1,
-        AST.builders.attr('...attributes', AST.builders.text(''), {
-          start: {
-            column: 0,
-            line: lineNumber + node.modifiers.length + 1,
-          },
-          end: {
-            column: '...attributes'.length,
-            line: lineNumber + node.modifiers.length + 1,
-          },
-        }),
-      );
-
-      node.modifiers = node.modifiers.map((modifier) => {
-        const { hash, loc, params, path } = modifier;
-
-        return AST.builders.elementModifier(path, params, hash, {
-          start: {
-            column: loc.start.column,
-            line: loc.start.line - 1,
-          },
-          end: {
-            column: loc.end.column,
-            line: loc.end.line - 1,
-          },
-        });
-      });
+      listSplattributesLast(node, lineNumber);
     },
 
     MustacheStatement(node) {
