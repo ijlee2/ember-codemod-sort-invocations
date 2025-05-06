@@ -10,6 +10,7 @@ import {
   canSkipSortAttributes,
   canSkipSortHash,
   canSkipSortModifiers,
+  listSplattributesLast,
   sortAttributes,
   sortHash,
   sortModifiers,
@@ -36,14 +37,26 @@ function updateTemplate(file: string): string {
 
     ElementNode(node) {
       const { attributes, modifiers } = node;
+      let isSorted = false;
 
       if (!canSkipSortAttributes(attributes)) {
         node.attributes = sortAttributes(attributes);
+        isSorted = true;
       }
 
       if (!canSkipSortModifiers(modifiers)) {
         node.modifiers = sortModifiers(modifiers);
+        isSorted = true;
       }
+
+      if (!isSorted) {
+        return;
+      }
+
+      // The originally last attribute's location has the highest line number
+      const lineNumber = attributes.at(-1)!.loc.start.line;
+
+      listSplattributesLast(node, lineNumber);
     },
 
     MustacheStatement(node) {

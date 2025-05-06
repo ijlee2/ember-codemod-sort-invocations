@@ -9,11 +9,11 @@
 
 {{! Component as a property }}
 <this.MyButton
-  @label="Submit form" @type="submit" data-test-button ...attributes {{on "click" this.doSomething}}
+  @label="Submit form" @type="submit" data-test-button {{on "click" this.doSomething}} ...attributes
 />
 
 <this.MyButton
-  @type="submit" data-test-button ...attributes {{on "click" this.doSomething}}
+  @type="submit" data-test-button {{on "click" this.doSomething}} ...attributes
 >
   Submit form
 </this.MyButton>

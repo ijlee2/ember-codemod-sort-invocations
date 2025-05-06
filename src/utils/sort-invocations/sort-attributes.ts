@@ -86,14 +86,14 @@ export function sortAttributes(attributes: Attribute[]): Attribute[] {
         const firstPart = value.parts[0];
         const newFirstPart = cloneIfTextNode(firstPart);
 
-        const lastPart = value.parts[value.parts.length - 1]!;
+        const lastPart = value.parts.at(-1)!;
         const newLastPart = cloneIfTextNode(lastPart);
 
         return AST.builders.attr(
           name,
           AST.builders.concat([
             newFirstPart,
-            ...value.parts.slice(1, value.parts.length - 1),
+            ...value.parts.slice(1, -1),
             newLastPart,
           ]),
         );
