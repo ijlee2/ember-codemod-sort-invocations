@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0
+
+### Minor Changes
+
+- [#14](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/14) Listed ...attributes last ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#15](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/15) Updated README ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.4.0
 
 ### Minor Changes
@@ -30,7 +40,7 @@
 
 ### Minor Changes
 
-- [#7](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/7) Supported <template> tags ([@ijlee2](https://github.com/ijlee2))
+- [#7](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/7) Supported `<template>` tags ([@ijlee2](https://github.com/ijlee2))
 
 ## 0.1.1
 
