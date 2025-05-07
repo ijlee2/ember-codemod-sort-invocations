@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.2
+
+### Patch Changes
+
+- [#17](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/17) Added unit tests ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.5.1
 
 ### Patch Changes
