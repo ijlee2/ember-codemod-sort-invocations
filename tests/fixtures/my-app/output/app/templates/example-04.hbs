@@ -7,6 +7,11 @@
   @isOpen={{this.isOpen}} @style={{concat "." @type "1"}}
 />
 
+<MyComponent
+  @className={{concat "a" @typeA "b" @typeB "c" @typeC "d"}}
+  aria-describedby="1"
+/>
+
 <input
   local-class="input {{concat 'flag-' @country}}" type="tel"
 />
@@ -18,6 +23,10 @@
 
 <MyComponent
   @isOpen={{this.isOpen}} @style=".{{@type}}1"
+/>
+
+<MyComponent
+  @className="a{{@typeA}}b{{@typeB}}c{{@typeC}}d" aria-describedby="1"
 />
 
 <input
