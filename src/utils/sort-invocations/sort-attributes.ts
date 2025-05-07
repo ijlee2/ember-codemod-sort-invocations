@@ -83,20 +83,9 @@ export function sortAttributes(attributes: Attribute[]): Attribute[] {
           break;
         }
 
-        const firstPart = value.parts[0];
-        const newFirstPart = cloneIfTextNode(firstPart);
+        const parts = value.parts.map(cloneIfTextNode);
 
-        const lastPart = value.parts.at(-1)!;
-        const newLastPart = cloneIfTextNode(lastPart);
-
-        return AST.builders.attr(
-          name,
-          AST.builders.concat([
-            newFirstPart,
-            ...value.parts.slice(1, -1),
-            newLastPart,
-          ]),
-        );
+        return AST.builders.attr(name, AST.builders.concat(parts));
       }
 
       case 'TextNode': {
