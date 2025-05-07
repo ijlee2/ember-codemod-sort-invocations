@@ -79,10 +79,6 @@ export function sortAttributes(attributes: Attribute[]): Attribute[] {
     switch (value.type) {
       case 'ConcatStatement': {
         // Bug in ember-template-recast@6.1.5 (it removes the single character before or after a MustacheStatement)
-        if (value.parts.length < 2) {
-          break;
-        }
-
         const parts = value.parts.map(cloneIfTextNode);
 
         return AST.builders.attr(name, AST.builders.concat(parts));
