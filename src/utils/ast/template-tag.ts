@@ -41,10 +41,10 @@ type ContentTag = {
   type: 'class-member' | 'expression';
 };
 
-export function parse(file: string) {
+export function parse(file: string): ContentTag[] {
   const preprocessor = new Preprocessor();
 
-  return preprocessor.parse(file) as unknown as ContentTag[];
+  return preprocessor.parse(file);
 }
 
 export function replaceTemplate(
