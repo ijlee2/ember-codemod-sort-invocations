@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.4
+
+### Patch Changes
+
+- [#19](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/19) Removed as unknown ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.5.3
 
 ### Patch Changes
