@@ -13,6 +13,20 @@ _Codemod to sort invocations in templates_
 1. [Contributing](#contributing)
 1. [License](#license)
 
+> [!TIP]
+>
+> You can use [`ember-template-lint`](https://github.com/ember-template-lint/ember-template-lint/blob/v7.7.0-ember-template-lint/docs/rule/sort-invocations.md) to integrate sorting into CI.
+>
+> ```js
+> /* .template-lintrc.js */
+> module.exports = {
+>   extends: ['recommended'],
+>   rules: {
+>     'sort-invocations': true,
+>   },
+> };
+> ```
+
 
 ## Features
 
