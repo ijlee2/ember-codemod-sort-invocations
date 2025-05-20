@@ -61,7 +61,7 @@ The codemod lists the named arguments in alphabetical order.
 {{t
   "my-component.description"
   installedOn=this.installationDate
-  packageName="@ember/source"
+  packageName="ember-source"
   packageVersion="6.0.0"
 }}
 ```
