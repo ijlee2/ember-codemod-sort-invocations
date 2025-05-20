@@ -8,7 +8,7 @@ test('utils | sort-invocations | sort-hash > canSkip returns true', function () 
     `{{t`,
     `  "my-component.description"`,
     `  installedOn=this.installationDate`,
-    `  packageName="@ember/source"`,
+    `  packageName="ember-source"`,
     `  packageVersion="6.0.0"`,
     `}}`,
   ].join('\n');

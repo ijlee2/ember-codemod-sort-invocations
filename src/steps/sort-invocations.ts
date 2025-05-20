@@ -37,19 +37,19 @@ function updateTemplate(file: string): string {
 
     ElementNode(node) {
       const { attributes, modifiers } = node;
-      let isSorted = false;
+      let hasBeenSorted = false;
 
       if (!canSkipSortAttributes(attributes)) {
         node.attributes = sortAttributes(attributes);
-        isSorted = true;
+        hasBeenSorted = true;
       }
 
       if (!canSkipSortModifiers(modifiers)) {
         node.modifiers = sortModifiers(modifiers);
-        isSorted = true;
+        hasBeenSorted = true;
       }
 
-      if (!isSorted) {
+      if (!hasBeenSorted) {
         return;
       }
 
