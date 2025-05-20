@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.0
+
+### Major Changes
+
+- [#22](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/22) Marked stable release ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#21](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/21) Improved documentation ([@ijlee2](https://github.com/ijlee2))
+- [#20](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/20) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 0.5.4
 
 ### Patch Changes
