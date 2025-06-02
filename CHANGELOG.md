@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2
+
+### Patch Changes
+
+- [#25](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/25) Updated README to recommend prettier-plugin-ember-hbs-tag ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.1
 
 ### Patch Changes
