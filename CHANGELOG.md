@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3
+
+### Patch Changes
+
+- [#26](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/26) Consumed types from content-tag ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.2
 
 ### Patch Changes
