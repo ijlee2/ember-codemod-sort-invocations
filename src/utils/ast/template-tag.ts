@@ -1,4 +1,8 @@
-import { Preprocessor } from 'content-tag';
+import {
+  type Parsed as ContentTag,
+  Preprocessor,
+  type Range,
+} from 'content-tag';
 
 const BufferMap = new Map<string, ArrayBuffer>();
 
@@ -23,23 +27,6 @@ function sliceByteRange(
   // eslint-disable-next-line @typescript-eslint/no-base-to-string
   return buffer.slice(indexStart, indexEnd).toString();
 }
-
-type Range = {
-  endByte: number;
-  endChar: number;
-  startByte: number;
-  startChar: number;
-};
-
-type ContentTag = {
-  contentRange: Range;
-  contents: string;
-  endRange: Range;
-  range: Range;
-  startRange: Range;
-  tagName: string;
-  type: 'class-member' | 'expression';
-};
 
 export function parse(file: string): ContentTag[] {
   const preprocessor = new Preprocessor();
