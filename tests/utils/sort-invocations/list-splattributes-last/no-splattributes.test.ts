@@ -27,4 +27,20 @@ test('utils | sort-invocations | list-splattributes-last > no splattributes', fu
       `/>`,
     ].join('\n'),
   );
+
+  // Check idempotency
+  file = updateFile(file);
+
+  assert.strictEqual(
+    file,
+    [
+      `<Ui::Button`,
+      `  @label="Submit form"`,
+      `  @type="submit"`,
+      `  data-test-button`,
+      `  {{autofocus}}`,
+      `  {{on "click" @onSubmit}}`,
+      `/>`,
+    ].join('\n'),
+  );
 });

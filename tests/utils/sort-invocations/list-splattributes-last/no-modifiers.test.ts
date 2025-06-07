@@ -24,4 +24,18 @@ test('utils | sort-invocations | list-splattributes-last > mod modifiers', funct
       `/>`,
     ].join('\n'),
   );
+
+  // Check idempotency
+  file = updateFile(file);
+
+  assert.strictEqual(
+    file,
+    [
+      `<Ui::Button`,
+      `  @label="Submit form"`,
+      `  @type="submit"`,
+      `  data-test-button ...attributes`,
+      `/>`,
+    ].join('\n'),
+  );
 });

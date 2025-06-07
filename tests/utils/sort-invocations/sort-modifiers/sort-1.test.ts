@@ -24,4 +24,18 @@ test('utils | sort-invocations | sort-modifiers > sort (1)', function () {
       `</button>`,
     ].join('\n'),
   );
+
+  // Check idempotency
+  file = updateFile(file);
+
+  assert.strictEqual(
+    file,
+    [
+      `<button`,
+      `  {{autofocus}} {{on "click" @onSubmit}}`,
+      `>`,
+      `  Submit form`,
+      `</button>`,
+    ].join('\n'),
+  );
 });

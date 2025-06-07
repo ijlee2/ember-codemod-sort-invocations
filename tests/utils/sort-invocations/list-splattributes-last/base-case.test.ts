@@ -28,4 +28,18 @@ test('utils | sort-invocations | list-splattributes-last > base case', function 
       `/>`,
     ].join('\n'),
   );
+
+  // Check idempotency
+  file = updateFile(file);
+
+  assert.strictEqual(
+    file,
+    [
+      `<Ui::Button`,
+      `  @label="Submit form"`,
+      `  @type="submit"`,
+      `  data-test-button {{autofocus}} {{on "click" @onSubmit}} ...attributes`,
+      `/>`,
+    ].join('\n'),
+  );
 });
