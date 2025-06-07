@@ -1,10 +1,9 @@
-import { AST } from '@codemod-utils/ast-template';
 import { assert, test } from '@codemod-utils/tests';
 
-import { canSkipSortAttributes } from '../../../../src/utils/sort-invocations/sort-attributes.js';
+import { canSkip } from '../../../helpers/utils/sort-invocations/sort-attributes.js';
 
 test('utils | sort-invocations | sort-attributes > canSkip returns false', function () {
-  const oldFile = [
+  const file = [
     `<Ui::Button`,
     `  {{on "click" this.doSomething}}`,
     `  @type="submit"`,
@@ -14,13 +13,5 @@ test('utils | sort-invocations | sort-attributes > canSkip returns false', funct
     `/>`,
   ].join('\n');
 
-  const traverse = AST.traverse();
-
-  traverse(oldFile, {
-    ElementNode(node) {
-      const { attributes } = node;
-
-      assert.strictEqual(canSkipSortAttributes(attributes), false);
-    },
-  });
+  assert.strictEqual(canSkip(file), false);
 });

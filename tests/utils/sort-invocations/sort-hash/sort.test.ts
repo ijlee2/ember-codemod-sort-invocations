@@ -1,10 +1,9 @@
-import { AST } from '@codemod-utils/ast-template';
 import { assert, test } from '@codemod-utils/tests';
 
-import { sortHash } from '../../../../src/utils/sort-invocations/sort-hash.js';
+import { updateFile } from '../../../helpers/utils/sort-invocations/sort-hash.js';
 
 test('utils | sort-invocations | sort-hash > sort', function () {
-  const oldFile = [
+  let file = [
     `{{t`,
     `  "my-component.description"`,
     `  packageVersion="6.0.0"`,
@@ -13,20 +12,10 @@ test('utils | sort-invocations | sort-hash > sort', function () {
     `}}`,
   ].join('\n');
 
-  const traverse = AST.traverse();
-
-  const ast = traverse(oldFile, {
-    MustacheStatement(node) {
-      const { hash } = node;
-
-      node.hash = sortHash(hash);
-    },
-  });
-
-  const newFile = AST.print(ast);
+  file = updateFile(file);
 
   assert.strictEqual(
-    newFile,
+    file,
     [
       `{{t`,
       `  "my-component.description"`,

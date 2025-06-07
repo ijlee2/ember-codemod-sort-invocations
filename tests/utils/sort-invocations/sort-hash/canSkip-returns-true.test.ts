@@ -1,10 +1,9 @@
-import { AST } from '@codemod-utils/ast-template';
 import { assert, test } from '@codemod-utils/tests';
 
-import { canSkipSortHash } from '../../../../src/utils/sort-invocations/sort-hash.js';
+import { canSkip } from '../../../helpers/utils/sort-invocations/sort-hash.js';
 
 test('utils | sort-invocations | sort-hash > canSkip returns true', function () {
-  const oldFile = [
+  const file = [
     `{{t`,
     `  "my-component.description"`,
     `  installedOn=this.installationDate`,
@@ -13,13 +12,5 @@ test('utils | sort-invocations | sort-hash > canSkip returns true', function () 
     `}}`,
   ].join('\n');
 
-  const traverse = AST.traverse();
-
-  traverse(oldFile, {
-    MustacheStatement(node) {
-      const { hash } = node;
-
-      assert.strictEqual(canSkipSortHash(hash), true);
-    },
-  });
+  assert.strictEqual(canSkip(file), true);
 });
