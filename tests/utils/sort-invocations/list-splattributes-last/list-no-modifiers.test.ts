@@ -2,7 +2,7 @@ import { assert, test } from '@codemod-utils/tests';
 
 import { updateFile } from '../../../helpers/utils/sort-invocations/list-splattributes-last.js';
 
-test('utils | sort-invocations | list-splattributes-last > mod modifiers', function () {
+test('utils | sort-invocations | list-splattributes-last > list (no modifiers)', function () {
   let file = [
     `<Ui::Button`,
     `  @label="Submit form"`,
@@ -20,7 +20,8 @@ test('utils | sort-invocations | list-splattributes-last > mod modifiers', funct
       `<Ui::Button`,
       `  @label="Submit form"`,
       `  @type="submit"`,
-      `  data-test-button ...attributes`,
+      `  data-test-button`,
+      `  ...attributes`,
       `/>`,
     ].join('\n'),
   );
@@ -34,7 +35,8 @@ test('utils | sort-invocations | list-splattributes-last > mod modifiers', funct
       `<Ui::Button`,
       `  @label="Submit form"`,
       `  @type="submit"`,
-      `  data-test-button ...attributes`,
+      `  data-test-button`,
+      `  ...attributes`,
       `/>`,
     ].join('\n'),
   );

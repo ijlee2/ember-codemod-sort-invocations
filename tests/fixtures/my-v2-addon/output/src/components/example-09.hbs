@@ -29,7 +29,7 @@
 
 {{! HTML elements }}
 <button
-  class={{local this.styles "button" "disabled"}} data-cucumber-button="Submit form" data-test-button disabled type="submit" ...attributes {{autofocus}} {{on "click" @onSubmit}}
+  class={{local this.styles "button" "disabled"}} data-cucumber-button="Submit form" data-test-button disabled type="submit" {{autofocus}} {{on "click" @onSubmit}} ...attributes
 >
   Submit form
 </button>

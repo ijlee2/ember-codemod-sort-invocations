@@ -23,7 +23,7 @@ export default class ExampleComponent extends Component<ExampleSignature> {
         styles
         "button"
         (unless this.enableSubmit "disabled")
-      }} data-cucumber-button="Submit form" data-test-button ...attributes {{autofocus}} {{on "click" @onSubmit}}
+      }} data-cucumber-button="Submit form" data-test-button {{autofocus}} {{on "click" @onSubmit}} ...attributes
     />
 
     <UiButton
@@ -31,7 +31,7 @@ export default class ExampleComponent extends Component<ExampleSignature> {
         styles
         "button"
         (unless this.enableSubmit "disabled")
-      }} data-cucumber-button="Submit form" data-test-button={{""}} ...attributes {{autofocus}} {{on "click" @onSubmit}}
+      }} data-cucumber-button="Submit form" data-test-button={{""}} {{autofocus}} {{on "click" @onSubmit}} ...attributes
     >
       Submit form
     </UiButton>
