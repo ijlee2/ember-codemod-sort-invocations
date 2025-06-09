@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.5
+
+### Patch Changes
+
+- [#29](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/29) Reduced complexity of canSkipListSplattributesLast() from O(n) to O(1) ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.4
 
 ### Patch Changes
