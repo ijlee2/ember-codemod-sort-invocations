@@ -1,10 +1,9 @@
-import { AST } from '@codemod-utils/ast-template';
 import { assert, test } from '@codemod-utils/tests';
 
-import { sortAttributes } from '../../../../src/utils/sort-invocations/sort-attributes.js';
+import { updateFile } from '../../../helpers/utils/sort-invocations/sort-attributes.js';
 
 test('utils | sort-invocations | sort-attributes > sort', function () {
-  const oldFile = [
+  let file = [
     `<Ui::Button`,
     `  {{on "click" this.doSomething}}`,
     `  @type="submit"`,
@@ -14,20 +13,22 @@ test('utils | sort-invocations | sort-attributes > sort', function () {
     `/>`,
   ].join('\n');
 
-  const traverse = AST.traverse();
-
-  const ast = traverse(oldFile, {
-    ElementNode(node) {
-      const { attributes } = node;
-
-      node.attributes = sortAttributes(attributes);
-    },
-  });
-
-  const newFile = AST.print(ast);
+  file = updateFile(file);
 
   assert.strictEqual(
-    newFile,
+    file,
+    [
+      `<Ui::Button`,
+      `  @label="Submit form" @type="submit" data-test-button ...attributes {{on "click" this.doSomething}}`,
+      `/>`,
+    ].join('\n'),
+  );
+
+  // Check idempotency
+  file = updateFile(file);
+
+  assert.strictEqual(
+    file,
     [
       `<Ui::Button`,
       `  @label="Submit form" @type="submit" data-test-button ...attributes {{on "click" this.doSomething}}`,
