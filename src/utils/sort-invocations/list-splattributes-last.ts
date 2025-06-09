@@ -4,29 +4,29 @@ type ElementNode = ReturnType<typeof AST.builders.element>;
 
 export function canSkipListSplattributesLast(node: ElementNode): boolean {
   const { attributes, modifiers } = node;
-  const splattributes = attributes.at(-1);
 
-  if (splattributes?.name !== '...attributes') {
+  const splattributes = attributes.at(-1);
+  const lastModifier = modifiers.at(-1);
+
+  if (splattributes?.name !== '...attributes' || !lastModifier) {
     return true;
   }
 
-  // Check that ...attributes appears after modifiers
+  // Check that ...attributes appears after the last modifier
   const splattributesPosition = splattributes.loc.start;
+  const lastModifierPosition = lastModifier.loc.start;
 
-  return modifiers.every((modifier) => {
-    const modifierPosition = modifier.loc.start;
+  if (splattributesPosition.line > lastModifierPosition.line) {
+    return true;
+  }
 
-    if (splattributesPosition.line > modifierPosition.line) {
-      return true;
-    }
-
-    return splattributesPosition.column > modifierPosition.column;
-  });
+  return splattributesPosition.column > lastModifierPosition.column;
 }
 
 export function listSplattributesLast(node: ElementNode) {
   // eslint-disable-next-line prefer-const
   let { attributes, modifiers } = node;
+
   const splattributes = attributes.at(-1)!;
 
   // Assign each modifier the location of its predecessor
