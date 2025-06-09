@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.4
+
+### Patch Changes
+
+- [#28](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/28) Ensured that ...attributes is listed last ([@ijlee2](https://github.com/ijlee2))
+- [#27](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/27) Extracted test helpers to simplify tests ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.3
 
 ### Patch Changes

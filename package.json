@@ -1,6 +1,6 @@
 {
   "name": "ember-codemod-sort-invocations",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Codemod to sort invocations in templates",
   "keywords": [
     "codemod",
