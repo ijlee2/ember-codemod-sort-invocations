@@ -23,4 +23,16 @@ test('utils | sort-invocations | sort-attributes > sort', function () {
       `/>`,
     ].join('\n'),
   );
+
+  // Check idempotency
+  file = updateFile(file);
+
+  assert.strictEqual(
+    file,
+    [
+      `<Ui::Button`,
+      `  @label="Submit form" @type="submit" data-test-button ...attributes {{on "click" this.doSomething}}`,
+      `/>`,
+    ].join('\n'),
+  );
 });

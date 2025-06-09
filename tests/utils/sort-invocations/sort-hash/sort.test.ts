@@ -25,4 +25,19 @@ test('utils | sort-invocations | sort-hash > sort', function () {
       `}}`,
     ].join('\n'),
   );
+
+  // Check idempotency
+  file = updateFile(file);
+
+  assert.strictEqual(
+    file,
+    [
+      `{{t`,
+      `  "my-component.description"`,
+      `  installedOn=this.installationDate`,
+      `  packageName="ember-source"`,
+      `  packageVersion="6.0.0"`,
+      `}}`,
+    ].join('\n'),
+  );
 });

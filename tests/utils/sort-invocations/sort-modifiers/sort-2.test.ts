@@ -26,4 +26,18 @@ test('utils | sort-invocations | sort-modifiers > sort (2)', function () {
       `</div>`,
     ].join('\n'),
   );
+
+  // Check idempotency
+  file = updateFile(file);
+
+  assert.strictEqual(
+    file,
+    [
+      `<div`,
+      `  {{on "click" this.trackEvent}} {{on "click" this.submitForm}} {{on "mouseenter" (fn this.setFocus true)}} {{on "mouseleave" (fn this.setFocus false)}}`,
+      `>`,
+      `  Submit form`,
+      `</div>`,
+    ].join('\n'),
+  );
 });

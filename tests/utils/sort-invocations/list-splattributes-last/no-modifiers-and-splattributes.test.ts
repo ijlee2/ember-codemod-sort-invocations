@@ -23,4 +23,18 @@ test('utils | sort-invocations | list-splattributes-last > no modifiers and spla
       `/>`,
     ].join('\n'),
   );
+
+  // Check idempotency
+  file = updateFile(file);
+
+  assert.strictEqual(
+    file,
+    [
+      `<Ui::Button`,
+      `  @label="Submit form"`,
+      `  @type="submit"`,
+      `  data-test-button`,
+      `/>`,
+    ].join('\n'),
+  );
 });
