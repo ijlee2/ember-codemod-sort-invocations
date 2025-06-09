@@ -7,6 +7,7 @@ import { findFiles } from '@codemod-utils/files';
 import type { Options } from '../types/index.js';
 import { parse, replaceTemplate } from '../utils/ast/template-tag.js';
 import {
+  canSkipListSplattributesLast,
   canSkipSortAttributes,
   canSkipSortHash,
   canSkipSortModifiers,
@@ -37,26 +38,21 @@ function updateTemplate(file: string): string {
 
     ElementNode(node) {
       const { attributes, modifiers } = node;
-      let hasBeenSorted = false;
 
       if (!canSkipSortAttributes(attributes)) {
         node.attributes = sortAttributes(attributes);
-        hasBeenSorted = true;
       }
 
       if (!canSkipSortModifiers(modifiers)) {
         node.modifiers = sortModifiers(modifiers);
-        hasBeenSorted = true;
       }
 
-      if (!hasBeenSorted) {
-        return;
+      if (!canSkipListSplattributesLast(node)) {
+        const { attributes, modifiers } = listSplattributesLast(node);
+
+        node.attributes = attributes;
+        node.modifiers = modifiers;
       }
-
-      // The originally last attribute's location has the highest line number
-      const lineNumber = attributes.at(-1)!.loc.start.line;
-
-      listSplattributesLast(node, lineNumber);
     },
 
     MustacheStatement(node) {
