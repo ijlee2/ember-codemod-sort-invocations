@@ -1,10 +1,9 @@
-import { AST } from '@codemod-utils/ast-template';
 import { assert, test } from '@codemod-utils/tests';
 
-import { sortModifiers } from '../../../../src/utils/sort-invocations/sort-modifiers.js';
+import { updateFile } from '../../../helpers/utils/sort-invocations/sort-modifiers.js';
 
 test('utils | sort-invocations | sort-modifiers > sort (2)', function () {
-  const oldFile = [
+  let file = [
     `<div`,
     `  {{on "mouseleave" (fn this.setFocus false)}}`,
     `  {{on "click" this.trackEvent}}`,
@@ -15,20 +14,10 @@ test('utils | sort-invocations | sort-modifiers > sort (2)', function () {
     `</div>`,
   ].join('\n');
 
-  const traverse = AST.traverse();
-
-  const ast = traverse(oldFile, {
-    ElementNode(node) {
-      const { modifiers } = node;
-
-      node.modifiers = sortModifiers(modifiers);
-    },
-  });
-
-  const newFile = AST.print(ast);
+  file = updateFile(file);
 
   assert.strictEqual(
-    newFile,
+    file,
     [
       `<div`,
       `  {{on "click" this.trackEvent}} {{on "click" this.submitForm}} {{on "mouseenter" (fn this.setFocus true)}} {{on "mouseleave" (fn this.setFocus false)}}`,

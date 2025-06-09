@@ -1,10 +1,9 @@
-import { AST } from '@codemod-utils/ast-template';
 import { assert, test } from '@codemod-utils/tests';
 
-import { listSplattributesLast } from '../../../../src/utils/sort-invocations/list-splattributes-last.js';
+import { updateFile } from '../../../helpers/utils/sort-invocations/list-splattributes-last.js';
 
 test('utils | sort-invocations | list-splattributes-last > no splattributes', function () {
-  const oldFile = [
+  let file = [
     `<Ui::Button`,
     `  @label="Submit form"`,
     `  @type="submit"`,
@@ -14,23 +13,10 @@ test('utils | sort-invocations | list-splattributes-last > no splattributes', fu
     `/>`,
   ].join('\n');
 
-  const traverse = AST.traverse();
-
-  const ast = traverse(oldFile, {
-    ElementNode(node) {
-      const { attributes } = node;
-
-      // The originally last attribute's location has the highest line number
-      const lineNumber = attributes.at(-1)!.loc.start.line;
-
-      listSplattributesLast(node, lineNumber);
-    },
-  });
-
-  const newFile = AST.print(ast);
+  file = updateFile(file);
 
   assert.strictEqual(
-    newFile,
+    file,
     [
       `<Ui::Button`,
       `  @label="Submit form"`,
