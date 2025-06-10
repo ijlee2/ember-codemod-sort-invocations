@@ -95,7 +95,7 @@ cd <path/to/your/project>
 npx ember-codemod-sort-invocations <arguments>
 ```
 
-Step 2. Fix formatting. You can use [`prettier-plugin-ember-hbs-tag`](https://github.com/ijlee2/prettier-plugin-ember-hbs-tag) and [`prettier-plugin-ember-template-tag`](https://github.com/ember-tooling/prettier-plugin-ember-template-tag) to format `*.hbs` and `*.{gjs,gts}`, respectively.
+Step 2. Fix formatting. You can use `prettier`, [`prettier-plugin-ember-hbs-tag`](https://github.com/ijlee2/prettier-plugin-ember-hbs-tag), and [`prettier-plugin-ember-template-tag`](https://github.com/ember-tooling/prettier-plugin-ember-template-tag) to format templates in `*.hbs`, `hbs` tags, and `<template>` tags, respectively.
 
 ```sh
 pnpm lint:fix
