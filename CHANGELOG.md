@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.7
+
+### Patch Changes
+
+- [#33](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/33) Replaced content-tag with @codemod-utils/ast-template-tag ([@ijlee2](https://github.com/ijlee2))
+- [#33](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/33) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.6
 
 ### Patch Changes
