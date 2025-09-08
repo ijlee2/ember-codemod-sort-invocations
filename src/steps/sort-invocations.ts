@@ -2,10 +2,10 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { AST } from '@codemod-utils/ast-template';
+import { updateTemplates } from '@codemod-utils/ast-template-tag';
 import { findFiles } from '@codemod-utils/files';
 
 import type { Options } from '../types/index.js';
-import { parse, replaceTemplate } from '../utils/ast/template-tag.js';
 import {
   canSkipListSplattributesLast,
   canSkipSortAttributes,
@@ -95,16 +95,7 @@ export function sortInvocations(options: Options) {
     if (filePath.endsWith('.hbs')) {
       newFile = updateTemplate(newFile);
     } else {
-      const contentTags = parse(newFile);
-
-      contentTags.reverse().forEach((contentTag) => {
-        const contents = updateTemplate(contentTag.contents);
-
-        newFile = replaceTemplate(newFile, {
-          contents,
-          range: contentTag.range,
-        });
-      });
+      newFile = updateTemplates(oldFile, updateTemplate);
     }
 
     writeFileSync(oldPath, newFile, 'utf8');
