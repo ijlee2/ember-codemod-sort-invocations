@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.8
+
+### Patch Changes
+
+- [#34](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/34) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.7
 
 ### Patch Changes
