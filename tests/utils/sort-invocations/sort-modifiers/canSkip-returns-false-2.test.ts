@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { canSkip } from '../../../helpers/utils/sort-invocations/sort-modifiers.js';
 
 test('utils | sort-invocations | sort-modifiers > canSkip returns false (2)', function () {
-  const file = [
+  const file = normalizeFile([
     `<div`,
     `  {{on "mouseleave" (fn this.setFocus false)}}`,
     `  {{on "click" this.trackEvent}}`,
@@ -12,7 +12,7 @@ test('utils | sort-invocations | sort-modifiers > canSkip returns false (2)', fu
     `>`,
     `  Submit form`,
     `</div>`,
-  ].join('\n');
+  ]);
 
   assert.strictEqual(canSkip(file), false);
 });

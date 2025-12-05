@@ -1,29 +1,29 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { updateFile } from '../../../helpers/utils/sort-invocations/list-splattributes-last.js';
 
 test('utils | sort-invocations | list-splattributes-last > list (no modifiers)', function () {
-  let file = [
+  let file = normalizeFile([
     `<Ui::Button`,
     `  @label="Submit form"`,
     `  @type="submit"`,
     `  data-test-button`,
     `  ...attributes`,
     `/>`,
-  ].join('\n');
+  ]);
 
   file = updateFile(file);
 
   assert.strictEqual(
     file,
-    [
+    normalizeFile([
       `<Ui::Button`,
       `  @label="Submit form"`,
       `  @type="submit"`,
       `  data-test-button`,
       `  ...attributes`,
       `/>`,
-    ].join('\n'),
+    ]),
   );
 
   // Check idempotency
@@ -31,13 +31,13 @@ test('utils | sort-invocations | list-splattributes-last > list (no modifiers)',
 
   assert.strictEqual(
     file,
-    [
+    normalizeFile([
       `<Ui::Button`,
       `  @label="Submit form"`,
       `  @type="submit"`,
       `  data-test-button`,
       `  ...attributes`,
       `/>`,
-    ].join('\n'),
+    ]),
   );
 });
