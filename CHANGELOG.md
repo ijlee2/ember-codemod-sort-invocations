@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+
+### Minor Changes
+
+- [#39](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/39) Supported Windows ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.11
 
 ### Patch Changes
