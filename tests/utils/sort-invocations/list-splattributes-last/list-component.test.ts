@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { updateFile } from '../../../helpers/utils/sort-invocations/list-splattributes-last.js';
 
 test('utils | sort-invocations | list-splattributes-last > list (component)', function () {
-  let file = [
+  let file = normalizeFile([
     `<Ui::Button`,
     `  @label="Submit form"`,
     `  @type="submit"`,
@@ -12,13 +12,13 @@ test('utils | sort-invocations | list-splattributes-last > list (component)', fu
     `  {{autofocus}}`,
     `  {{on "click" @onSubmit}}`,
     `/>`,
-  ].join('\n');
+  ]);
 
   file = updateFile(file);
 
   assert.strictEqual(
     file,
-    [
+    normalizeFile([
       `<Ui::Button`,
       `  @label="Submit form"`,
       `  @type="submit"`,
@@ -26,7 +26,7 @@ test('utils | sort-invocations | list-splattributes-last > list (component)', fu
       `  {{on "click" @onSubmit}}`,
       `...attributes`,
       `/>`,
-    ].join('\n'),
+    ]),
   );
 
   // Check idempotency
@@ -34,13 +34,13 @@ test('utils | sort-invocations | list-splattributes-last > list (component)', fu
 
   assert.strictEqual(
     file,
-    [
+    normalizeFile([
       `<Ui::Button`,
       `  @label="Submit form"`,
       `  @type="submit"`,
       `  data-test-button {{autofocus}}`,
       `  {{on "click" @onSubmit}} ...attributes`,
       `/>`,
-    ].join('\n'),
+    ]),
   );
 });

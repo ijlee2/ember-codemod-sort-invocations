@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { canSkip } from '../../../helpers/utils/sort-invocations/sort-attributes.js';
 
 test('utils | sort-invocations | sort-attributes > canSkip returns false', function () {
-  const file = [
+  const file = normalizeFile([
     `<Ui::Button`,
     `  {{on "click" this.doSomething}}`,
     `  @type="submit"`,
@@ -11,7 +11,7 @@ test('utils | sort-invocations | sort-attributes > canSkip returns false', funct
     `  data-test-button`,
     `  @label="Submit form"`,
     `/>`,
-  ].join('\n');
+  ]);
 
   assert.strictEqual(canSkip(file), false);
 });

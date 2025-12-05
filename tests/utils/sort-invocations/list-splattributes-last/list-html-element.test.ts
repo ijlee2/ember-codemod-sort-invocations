@@ -1,9 +1,9 @@
-import { assert, test } from '@codemod-utils/tests';
+import { assert, normalizeFile, test } from '@codemod-utils/tests';
 
 import { updateFile } from '../../../helpers/utils/sort-invocations/list-splattributes-last.js';
 
 test('utils | sort-invocations | list-splattributes-last > base case (HTML element)', function () {
-  let file = [
+  let file = normalizeFile([
     `<iframe`,
     `  class="full-screen"`,
     `  data-test-id="my-iframe"`,
@@ -13,13 +13,13 @@ test('utils | sort-invocations | list-splattributes-last > base case (HTML eleme
     `  {{did-insert this.doSomething1}}`,
     `  {{on "load" this.doSomething2}}`,
     `></iframe>`,
-  ].join('\n');
+  ]);
 
   file = updateFile(file);
 
   assert.strictEqual(
     file,
-    [
+    normalizeFile([
       `<iframe`,
       `  class="full-screen"`,
       `  data-test-id="my-iframe"`,
@@ -28,7 +28,7 @@ test('utils | sort-invocations | list-splattributes-last > base case (HTML eleme
       `  {{on "load" this.doSomething2}}`,
       `...attributes`,
       `></iframe>`,
-    ].join('\n'),
+    ]),
   );
 
   // Check idempotency
@@ -36,7 +36,7 @@ test('utils | sort-invocations | list-splattributes-last > base case (HTML eleme
 
   assert.strictEqual(
     file,
-    [
+    normalizeFile([
       `<iframe`,
       `  class="full-screen"`,
       `  data-test-id="my-iframe"`,
@@ -44,6 +44,6 @@ test('utils | sort-invocations | list-splattributes-last > base case (HTML eleme
       `  src={{this.url}} {{did-insert this.doSomething1}}`,
       `  {{on "load" this.doSomething2}} ...attributes`,
       `></iframe>`,
-    ].join('\n'),
+    ]),
   );
 });
