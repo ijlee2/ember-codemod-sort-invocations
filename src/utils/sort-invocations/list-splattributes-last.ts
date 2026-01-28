@@ -1,5 +1,7 @@
 import { AST } from '@codemod-utils/ast-template';
 
+type AttrNode = ReturnType<typeof AST.builders.attr>;
+type ElementModifierStatement = ReturnType<typeof AST.builders.elementModifier>;
 type ElementNode = ReturnType<typeof AST.builders.element>;
 
 export function canSkipListSplattributesLast(node: ElementNode): boolean {
@@ -23,7 +25,10 @@ export function canSkipListSplattributesLast(node: ElementNode): boolean {
   return splattributesPosition.column > lastModifierPosition.column;
 }
 
-export function listSplattributesLast(node: ElementNode) {
+export function listSplattributesLast(node: ElementNode): {
+  attributes: AttrNode[];
+  modifiers: ElementModifierStatement[];
+} {
   // eslint-disable-next-line prefer-const
   let { attributes, modifiers } = node;
 
