@@ -79,7 +79,7 @@ function updateTemplate(file: string): string {
   return AST.print(ast);
 }
 
-export function sortInvocations(options: Options) {
+export function sortInvocations(options: Options): void {
   const { projectRoot, src } = options;
 
   const filePaths = findFiles(src, {
