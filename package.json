@@ -16,9 +16,6 @@
   "type": "module",
   "main": "dist/src/index.js",
   "bin": "dist/bin/ember-codemod-sort-invocations.js",
-  "directories": {
-    "test": "tests"
-  },
   "files": [
     "dist"
   ],
