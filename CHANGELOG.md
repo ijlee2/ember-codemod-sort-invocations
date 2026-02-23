@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0
+
+### Major Changes
+
+- [#44](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/44) Dropped support for Node 20 ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.2.2
 
 ### Patch Changes
