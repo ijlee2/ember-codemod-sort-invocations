@@ -92,7 +92,7 @@ Step 1. Run codemod.
 
 ```sh
 cd <path/to/your/project>
-npx ember-codemod-sort-invocations <arguments>
+pnpx ember-codemod-sort-invocations <arguments>
 ```
 
 Step 2. Fix formatting. You can use `prettier`, [`prettier-plugin-ember-hbs-tag`](https://github.com/ijlee2/prettier-plugin-ember-hbs-tag), and [`prettier-plugin-ember-template-tag`](https://github.com/ember-tooling/prettier-plugin-ember-template-tag) to format templates in `*.hbs`, `hbs` tags, and `<template>` tags, respectively.
@@ -107,9 +107,9 @@ pnpm lint:fix
 You must pass `--type` to indicate what type of project you have.
 
 ```sh
-npx ember-codemod-sort-invocations --type app
-npx ember-codemod-sort-invocations --type v1-addon
-npx ember-codemod-sort-invocations --type v2-addon
+pnpx ember-codemod-sort-invocations --type app
+pnpx ember-codemod-sort-invocations --type v1-addon
+pnpx ember-codemod-sort-invocations --type v2-addon
 ```
 
 <details>
@@ -119,7 +119,7 @@ npx ember-codemod-sort-invocations --type v2-addon
 Pass `--root` to run the codemod somewhere else (i.e. not in the current directory).
 
 ```sh
-npx ember-codemod-sort-invocations --root <path/to/your/project>
+pnpx ember-codemod-sort-invocations --root <path/to/your/project>
 ```
 
 </details>
