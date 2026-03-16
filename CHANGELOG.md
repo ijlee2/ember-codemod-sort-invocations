@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1
+
+### Patch Changes
+
+- [`6caa9cc`](https://github.com/ijlee2/ember-codemod-sort-invocations/commit/6caa9cc9f0f0b80b7af533a0af2094c69e006d68) Recommended the use of pnpx ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.0
 
 ### Major Changes
