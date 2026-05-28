@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.0
+
+### Minor Changes
+
+- [#51](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/51) Updated dependencies (`@codemod-utils/ast-template` to v4) ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.5
 
 ### Patch Changes
