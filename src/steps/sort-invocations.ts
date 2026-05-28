@@ -18,9 +18,7 @@ import {
 } from '../utils/sort-invocations/index.js';
 
 function updateTemplate(file: string): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
     BlockStatement(node) {
       const { hash, params, path } = node;
 

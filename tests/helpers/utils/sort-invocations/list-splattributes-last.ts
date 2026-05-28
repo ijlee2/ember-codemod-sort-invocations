@@ -6,10 +6,9 @@ import {
 } from '../../../../src/utils/sort-invocations/list-splattributes-last.js';
 
 export function canSkip(file: string): boolean | undefined {
-  const traverse = AST.traverse();
   let canSkip: boolean | undefined = undefined;
 
-  traverse(file, {
+  AST.traverse(file, {
     ElementNode(node) {
       canSkip = canSkipListSplattributesLast(node);
     },
@@ -19,9 +18,7 @@ export function canSkip(file: string): boolean | undefined {
 }
 
 export function updateFile(file: string): string {
-  const traverse = AST.traverse();
-
-  const ast = traverse(file, {
+  const ast = AST.traverse(file, {
     ElementNode(node) {
       listSplattributesLast(node);
     },
