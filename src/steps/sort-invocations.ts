@@ -26,6 +26,7 @@ function updateTemplate(file: string): string {
         return;
       }
 
+      // eslint-disable-next-line no-useless-assignment
       node = AST.builders.block(
         path,
         params,
@@ -70,6 +71,7 @@ function updateTemplate(file: string): string {
         return;
       }
 
+      // eslint-disable-next-line no-useless-assignment
       node = AST.builders.sexpr(path, params, sortHash(hash));
     },
   });
