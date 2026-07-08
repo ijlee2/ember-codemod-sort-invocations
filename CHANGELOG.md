@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.2
+
+### Patch Changes
+
+- [`d500913`](https://github.com/ijlee2/ember-codemod-sort-invocations/commit/d500913cf2488c370c6e90b87681669f51418427) Updated dependencies (eslint@v10, typescript@v6) ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.1
 
 ### Patch Changes
