@@ -29,7 +29,7 @@ export function listSplattributesLast(node: ElementNode): {
   attributes: AttrNode[];
   modifiers: ElementModifierStatement[];
 } {
-  // eslint-disable-next-line prefer-const
+  // oxlint-disable-next-line eslint/prefer-const
   let { attributes, modifiers } = node;
 
   const splattributes = attributes.at(-1)!;
