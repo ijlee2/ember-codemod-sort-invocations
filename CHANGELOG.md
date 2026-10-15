@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.6
+
+### Patch Changes
+
+- [#61](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/61) Updated dependencies (replaced eslint with oxlint) ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.5
 
 ### Patch Changes
