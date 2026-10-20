@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.1.7
+
+### Patch Changes
+
+- [#63](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/63) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+- [#62](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/62) Introduced trusted publishing ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.6
 
 ### Patch Changes
