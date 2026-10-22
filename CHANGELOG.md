@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.8
+
+### Patch Changes
+
+- [#64](https://github.com/ijlee2/ember-codemod-sort-invocations/pull/64) Updated @codemod-utils/ast-template to 4.1.3 (@glimmer/syntax to 0.97.0) ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.1.7
 
 ### Patch Changes
